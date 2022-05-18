@@ -1,33 +1,14 @@
 // import logo from './logo.svg';
 import {NavLink, Route, Routes } from "react-router-dom";
 import './App.css';
-
-const Profile = () => {
-  return(
-    <h2>Это страница с профилем</h2>
-  );
-}
-
-const Messages = () => {
-  return(
-    <h2>Это страница с сообщениями</h2>
-  );
-}
-
-const Settings = () => {
-  return(
-    <h2>Это страница с настройками</h2>
-  );
-}
-
-const Friends = () => {
-  return(
-    <h2>Это страница с друзьями</h2>
-  );
-}
+import Profile from "./components/Profile";
+import Messages from "./components/Messages";
+import Settings from "./components/Settings";
+import Friends from "./components/Friends";
 
 
-function App() {
+function App(props) {
+  console.log(props);
   return (
     <div className="container-fluid mt-3">
 			<div className="row">
@@ -50,10 +31,10 @@ function App() {
 
 				<div className="col-sm-9">
           <Routes>
-            <Route path="/profile" element={<Profile/>}/>
+            <Route path="/profile" element={<Profile function={props.functions.key_getUser}/>}/>
             <Route path="/messages" element={<Messages/>}/>
             <Route path="/settings" element={<Settings/>}/>
-            <Route path="/friends" element={<Friends/>}/>
+            <Route path="/friends" element={<Friends function={props.functions.key_getUsers}/>}/>
           </Routes>
         </div>
 			</div>
